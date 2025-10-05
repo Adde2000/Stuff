@@ -2,7 +2,7 @@
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
 
     Write-Host "Restarting script as administrator..."
-    Start-Sleep -Seconds 3  # Give user time to read
+    Start-Sleep -Seconds 1  # Give user time to read
 
     # Determine PowerShell executable
     $pwsh = Get-Command pwsh -ErrorAction SilentlyContinue
@@ -10,11 +10,11 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
     if ($pwsh) {
         Write-Host "Running in PowerShell 7"
-        Start-Sleep -Seconds 3
+        Start-Sleep -Seconds 2
         $exe = $pwsh.Source
     } elseif ($ps5) {
         Write-Host "Running in PowerShell 5"
-        Start-Sleep -Seconds 3
+        Start-Sleep -Seconds 2
         $exe = $ps5.Source
     } else {
         Write-Error "No PowerShell executable found."
