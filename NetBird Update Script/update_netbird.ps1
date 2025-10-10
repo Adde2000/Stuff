@@ -58,11 +58,16 @@ while (-not (Get-Process -Name $processName -ErrorAction SilentlyContinue)) {
     Start-Sleep -Milliseconds 200
 }
 
-Write-Host "$processName has started. Continuing script..."
+Write-Host "$processName has started. "
 
 # Clean up
 Write-Host "Removing installer..."
 Remove-Item $installerPath -Force
+
+# Check NetBird version
+Write-Host "NetBird updated to version: " -ForegroundColor Cyan -NoNewline
+Write-Host $(netbird version) -ForegroundColor Blue
+
 
 if (Test-Path $shortcutPath) {
     # Ask for confirmation
