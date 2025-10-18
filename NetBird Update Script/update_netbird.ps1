@@ -38,6 +38,10 @@ $installerPath = "$env:TEMP\NetBird.exe"
 $installedPath = "C:\Program Files\Netbird\NetBird-UI.exe"
 $shortcutPath = "$env:PUBLIC\Desktop\Netbird.lnk"
 
+# Check NetBird version
+Write-Host "Installed NetBird version: " -ForegroundColor Cyan -NoNewline
+Write-Host $(netbird version) -ForegroundColor Blue
+
 # Download the file
 Write-Host "Downloading installer from $downloadUrl..."
 $ProgressPreference = 'SilentlyContinue'
