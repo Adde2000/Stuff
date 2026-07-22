@@ -59,5 +59,10 @@ EOF
 # Reload systemd, enable and start service and show status
 systemctl daemon-reload
 systemctl enable --now node_exporter
-sleep 3
+for i in {1..30}; do
+  if systemctl is-active --quiet node_exporter && curl -fsS http://localhost:9100/metrics >/dev/null; then
+    break
+  fi
+  sleep 1
+done
 systemctl status node_exporter --no-pager
