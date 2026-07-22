@@ -59,4 +59,5 @@ EOF
 # Reload systemd, enable and start service and show status
 systemctl daemon-reload
 systemctl enable --now node_exporter
+sleep 3
 systemctl status node_exporter --no-pager
